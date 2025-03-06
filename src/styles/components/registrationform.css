@@ -1,0 +1,52 @@
+.formpart{
+display: flex;
+flex-direction: column;
+gap: 20px; 
+background-color:rgba(19, 19, 49, 0.2);
+height:14rem;
+align-items: center;
+padding: 10px 20px;
+width: 25rem;
+border-radius: 10px;
+box-shadow: 2px 2px 2px rgba(35, 35, 75, 0.2);
+z-index: 1000;
+grid-area: right;
+justify-self: center;
+  
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;        
+    gap: 10px;    
+    align-items: center;
+}
+
+.inputs input {
+    width: 15rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 2rem;
+    text-align: center;
+    padding: 2px 5px;
+    overflow: hidden;
+}
+
+.inputs button{
+    width: 6rem;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+
+.error {
+    color: #921111;
+    animation: err 3s linear 1s 5 normal 
+}
+
+@keyframes err {
+    0% { opacity: 0; }
+    50%{ opacity: 1; }
+    100%{opacity: 0;}
+}
+

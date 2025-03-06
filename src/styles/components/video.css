@@ -1,0 +1,21 @@
+.preview{
+    transition: smooth;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    justify-content: center;
+    align-content: center;
+}
+
+.preview video{
+    width: 80%;
+    border-radius: 5px;
+}
+.bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}

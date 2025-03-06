@@ -1,0 +1,1 @@
+export const api  = 'https://welding-earnings-lifestyle-ones.trycloudflare.com/'

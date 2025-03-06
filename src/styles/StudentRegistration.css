@@ -1,0 +1,17 @@
+.viewarea{
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-areas:"left right";
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.left{
+    grid-area: left;
+    background-color:white;
+}
+.right{
+    grid-area: right;
+    background-color:rgb(21, 122, 21);
+}

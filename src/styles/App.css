@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(2, 2, 54);
+    height: 100vh;
+    color: whitesmoke;
+    
+}
+
