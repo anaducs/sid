@@ -1,17 +1,38 @@
-.viewarea{
-    display: grid;
-    grid-template-columns: 1.7fr 1fr;
-    grid-template-areas:"left right";
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
+.viewarea {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  grid-template-areas: "left right";
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
-.left{
-    grid-area: left;
-    background-color:white;
+.left {
+  grid-area: left;
+ 
 }
-.right{
-    grid-area: right;
-    background-color:rgb(21, 122, 21);
+.right {
+  grid-area: right;
+  background-color: rgb(21, 122, 21);
+}
+
+@media (max-width: 600px) {
+  .viewarea {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: end;    
+    grid-template-areas: "top"
+    "bottom";
+    }
+  .top{
+    justify-self: center;
+    grid-area: top;    
+  }
+  .bottom{
+    justify-self: center;
+  }
+  .hidden{
+    display: none;
+  }
 }

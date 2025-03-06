@@ -11,6 +11,7 @@ import {
   uploadFailed,
   uploadSuccess,
   uploadStart,
+  setCaptureVideoClick 
 } from "../redux/videoSlice";
 import "../styles/components/registrationform.css";
 import { api } from "../helper/api";
@@ -18,7 +19,7 @@ import { api } from "../helper/api";
 
 function RegistrationForm() {
   const dispatch = useDispatch();
-  const { videoUrl } = useSelector((state) => state.video);
+  const { videoUrl,captureVideoClicked } = useSelector((state) => state.video);
   const { name, id, errormsg } = useSelector((state) => state.student);
   const handleInput = (e) => {
     switch (e.target.name) {
@@ -52,8 +53,10 @@ function RegistrationForm() {
 
   const handleVideoCAM = () => {
     if (validation()) {
+      dispatch(setCaptureVideoClick())
       dispatch(triggerShouldUploadStart());
     }
+    
   };
   const handleUpload = async () => {
     if (validation()) {
@@ -61,7 +64,7 @@ function RegistrationForm() {
         dispatch(setErrormsg("there is no video file"));
         return;
       }
-      try {
+        try {
         const response = await fetch(videoUrl);
         const videoBlob = await response.blob();
         const formData = new FormData();
@@ -72,19 +75,20 @@ function RegistrationForm() {
         dispatch(uploadStart())
 
         const res = await fetch(`${api}/upload`,{method:"POST",body:formData})
-        console.log(await res.json());
+        console.log(res);
         
 
         if(!res){
           dispatch(uploadFailed())
         }else{
-         dispatch(uploadSuccess)
+         dispatch(uploadSuccess())
         }
 
 
       } catch (error) {
         console.log("error", error);
       }
+
     }
   };
 
@@ -111,7 +115,7 @@ function RegistrationForm() {
               <button onClick={handleUpload}>Register</button>
             </div>
           ) : (
-            <button onClick={handleVideoCAM}>Capture Video</button>
+            !captureVideoClicked && <button onClick={handleVideoCAM}>Capture Video</button>
           )}
           {errormsg && <p className="error">{errormsg}</p>}
         </div>
