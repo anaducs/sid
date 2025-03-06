@@ -52,6 +52,6 @@ export const {
   uploadStart,
   startRecording,
   stopRecording,
-  triggerShouldUploadStart,resetuploading,setCaptureVideoClick
+  triggerShouldUploadStart,resetuploading,setCaptureVideoClick,resetCaptureVideo
 } = videoSlice.actions;
 export default videoSlice.reducer;

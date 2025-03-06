@@ -12,12 +12,15 @@ import {
   uploadSuccess,
   uploadStart,
   setCaptureVideoClick 
+  ,resetCaptureVideo
 } from "../redux/videoSlice";
 import "../styles/components/registrationform.css";
 import { api } from "../helper/api";
+import { useNavigate } from "react-router-dom";
 
 
 function RegistrationForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { videoUrl,captureVideoClicked } = useSelector((state) => state.video);
   const { name, id, errormsg } = useSelector((state) => state.student);
@@ -81,7 +84,9 @@ function RegistrationForm() {
         if(!res){
           dispatch(uploadFailed())
         }else{
+         dispatch(resetCaptureVideo())         
          dispatch(uploadSuccess())
+         navigate("/");
         }
 
 
