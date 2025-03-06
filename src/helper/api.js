@@ -1,1 +1,1 @@
-export const api  = 'https://paste-as-these-sending.trycloudflare.com'
+export const api  = 'https://novels-preferences-entered-life.trycloudflare.com'
