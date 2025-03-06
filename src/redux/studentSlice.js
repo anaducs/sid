@@ -32,5 +32,5 @@ const studentSlice = createSlice({
 });
 
 
-export const {setStudentName,setStudentId,setErrormsg,resetErrormsg} = studentSlice.actions;
+export const {setStudentName,setStudentId,setErrormsg,resetErrormsg,resetStudenName,resetStudentId} = studentSlice.actions;
 export default studentSlice.reducer;

@@ -42,6 +42,9 @@ const videoSlice = createSlice({
     },
     resetCaptureVideo:(state)=>{
       state.captureVideoClicked=false
+    },
+    resetVideourl:(state)=>{
+      state.videoUrl=null
     }
   },
 });
@@ -52,6 +55,6 @@ export const {
   uploadStart,
   startRecording,
   stopRecording,
-  triggerShouldUploadStart,resetuploading,setCaptureVideoClick,resetCaptureVideo
+  triggerShouldUploadStart,resetuploading,setCaptureVideoClick,resetCaptureVideo,resetVideourl
 } = videoSlice.actions;
 export default videoSlice.reducer;

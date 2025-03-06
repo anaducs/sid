@@ -5,6 +5,7 @@ import {
   setStudentId,
   setErrormsg,
   resetErrormsg,
+  resetStudenName,resetStudentId
 } from "../redux/studentSlice";
 import {
   triggerShouldUploadStart,
@@ -12,7 +13,7 @@ import {
   uploadSuccess,
   uploadStart,
   setCaptureVideoClick 
-  ,resetCaptureVideo
+  ,resetCaptureVideo,resetVideourl
 } from "../redux/videoSlice";
 import "../styles/components/registrationform.css";
 import { api } from "../helper/api";
@@ -81,12 +82,16 @@ function RegistrationForm() {
         console.log(res);
         
 
-        if(!res){
+        if(!res.ok){
           dispatch(uploadFailed())
         }else{
          dispatch(resetCaptureVideo())         
          dispatch(uploadSuccess())
-         navigate("/");
+         dispatch(resetStudenName())
+         dispatch(resetStudentId())
+         dispatch(resetVideourl())
+         
+         
         }
 
 
@@ -106,13 +111,15 @@ function RegistrationForm() {
             type="text"
             name="studentName"
             placeholder="Name"
-            onBlur={handleInput}
+            value={name}
+            onChange={handleInput}
           />
           <input
             type="text"
             name="studentId"
             placeholder="University Reg No."
-            onBlur={handleInput}
+            value={id}
+            onChange={handleInput}
           />
           {videoUrl ? (
             <div className="uploadsection">
