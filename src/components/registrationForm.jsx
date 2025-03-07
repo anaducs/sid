@@ -13,17 +13,16 @@ import {
   uploadSuccess,
   uploadStart,
   setCaptureVideoClick 
-  ,resetCaptureVideo,resetVideourl
+  ,resetCaptureVideo,resetVideourl,setStartTimer,resetStartTimer
 } from "../redux/videoSlice";
 import "../styles/components/registrationform.css";
 import { api } from "../helper/api";
-import { useNavigate } from "react-router-dom";
+
 
 
 function RegistrationForm() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { videoUrl,captureVideoClicked } = useSelector((state) => state.video);
+  const { videoUrl,captureVideoClicked,startTimer } = useSelector((state) => state.video);
   const { name, id, errormsg } = useSelector((state) => state.student);
   const handleInput = (e) => {
     switch (e.target.name) {
@@ -57,6 +56,7 @@ function RegistrationForm() {
 
   const handleVideoCAM = () => {
     if (validation()) {
+      dispatch(resetStartTimer())
       dispatch(setCaptureVideoClick())
       dispatch(triggerShouldUploadStart());
     }
@@ -75,7 +75,7 @@ function RegistrationForm() {
         formData.append("student_name", name);
         formData.append("student_id", id);
         formData.append("file", videoBlob, "video.mp4");
-
+        dispatch(resetStartTimer())
         dispatch(uploadStart())
 
         const res = await fetch(`${api}/upload`,{method:"POST",body:formData})
@@ -124,7 +124,7 @@ function RegistrationForm() {
           {videoUrl ? (
             <div className="uploadsection">
               <button onClick={handleVideoCAM}>Retake</button>{" "}
-              <button onClick={handleUpload}>Register</button>
+              <button disabled={startTimer} onClick={handleUpload}>Register</button>
             </div>
           ) : (
             !captureVideoClicked && <button onClick={handleVideoCAM}>Capture Video</button>

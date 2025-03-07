@@ -5,12 +5,19 @@ const initialState = {
   videoUrl: null,
   uploadStatus: "idle",
   shouldUploadinStart: false,
-  captureVideoClicked : false
+  captureVideoClicked : false,
+  startTimer:false
   };
 const videoSlice = createSlice({
   name: "video",
   initialState,
   reducers: {
+    setStartTimer:(state)=>{
+      state.startTimer=true;
+    },
+    resetStartTimer:(state)=>{
+      state.startTimer=false;
+    },
     startRecording: (state) => {
       state.recording = true;
       state.uploadStatus = "idle";
@@ -50,6 +57,7 @@ const videoSlice = createSlice({
 });
 
 export const {
+  setStartTimer,resetStartTimer,
   uploadFailed,
   uploadSuccess,
   uploadStart,

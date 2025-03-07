@@ -1,13 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  
   startRecording,
   stopRecording,
   resetuploading,
+  setStartTimer,
+  resetStartTimer
 } from "../redux/videoSlice";
 import '../styles/components/video.css'
+import Timer from "./Timer";
 
 function Video() {
+  const timer = 25000
+ 
   const videoRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const dispatch = useDispatch();
@@ -15,7 +20,7 @@ function Video() {
     (state) => state.video
   );
   const { name, id } = useSelector((state) => state.student);
-  const { shouldUploadinStart,videoUrl } = useSelector((state) => state.video);
+  const { shouldUploadinStart,videoUrl,startTimer} = useSelector((state) => state.video);
   const handleRecording = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     videoRef.current.srcObject = stream;
@@ -35,12 +40,14 @@ function Video() {
       dispatch(resetuploading()) // recording reset
     };
 
-    mediaRecorder.start();
+    mediaRecorder.start()
+    dispatch(setStartTimer())
 
     setTimeout(() => {
       mediaRecorder.stop();
       stream.getTracks().forEach((track) => track.stop());
-    }, 25000);
+      dispatch(resetStartTimer())
+    }, timer);
   };
 
 
@@ -56,6 +63,7 @@ function Video() {
       {shouldUploadinStart && 
        <div className="preview">
         <video ref={videoRef} autoPlay className="videoarea" /> 
+        {startTimer&& <Timer timer={timer}/>}
         <h4>show both sides and front of your face</h4>
        </div>}
       

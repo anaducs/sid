@@ -7,15 +7,38 @@
     border-radius: 5px;
     align-items: center;
     padding: 10px;
+    position: relative;
 }
 
 .preview video{
     width: 80%;
     border-radius: 5px;
+ 
 }
 .bottom {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
+}
+
+.videoarea ~ .Timer{
+    position: absolute;
+    top: 23rem;
+    right: 6rem;
+    z-index: 100000;
+    color:white;
+    border-radius: 50%;
+    border-color: white;
+}
+
+@media (max-width: 600px){
+    .videoarea ~ .Timer{
+        position: absolute;
+        top: 13rem;
+        z-index: 100000;
+        color:white;
+        border-radius: 50%;
+        border-color: white;
+        background-color: aqua;}
 }
