@@ -1,1 +1,1 @@
-export const api  = 'https://citizenship-tail-extras-attending.trycloudflare.com'
+export const api  = 'http://localhost:8000'

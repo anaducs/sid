@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
+        
     <Provider store={store}>
       <Router>
         <Routes>

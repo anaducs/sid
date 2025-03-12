@@ -10,6 +10,7 @@ import {
 import '../styles/components/video.css'
 import Timer from "./Timer";
 
+
 function Video() {
   const timer = 25000
  
