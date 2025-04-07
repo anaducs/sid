@@ -13,8 +13,8 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-        <Route path="/" element={<Dashboard/>} />
-          <Route path="/register" element={<StudentRegistration />} />
+{/*         <Route path="/" element={<Dashboard/>} /> */}
+          <Route path="/" element={<StudentRegistration />} />
         </Routes>
       </Router>
     </Provider>
