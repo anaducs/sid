@@ -5,6 +5,7 @@ import Video from "./components/Video";
 import "./styles/App.css";
 import StudentRegistration from "./pages/StudentRegistration";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/" element={<StudentRegistration />} />
+        <Route path="/" element={<Dashboard/>} />
+          <Route path="/register" element={<StudentRegistration />} />
         </Routes>
       </Router>
     </Provider>
